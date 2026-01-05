@@ -1,16 +1,32 @@
 import requests
 
-while True:
-    cep = input("Please inform your cep: ")
-    if cep.isdigit():
-        break
-    print("Invalid cep, must be only numbers.")
+class Cep:
+    def __init__(self, cep):
+        self.cep = cep
+        self.cleaned_cep = self.clean_cep()
+        if self.cleaned_cep != None:
+            self.response = self.search_cep()
+            self.state = self.response.get('uf')
+            self.city = self.response.get('localidade')
+            self.neighborhood = self.response.get('bairro')
+            self.street = self.response.get('logradouro')
+            self.display_cep()
+        
 
-response = requests.get(f"https://viacep.com.br/ws/{cep}/json/").json()
-
-# Exibindo o conteúdo da resposta
-print(f"State: {response.get('uf')}\n"
-      f"City: {response.get('localidade')}\n"
-      f"Neighborhood: {response.get('bairro')}\n"
-      f"Street: {response.get('logradouro')}\n"
-      )
+    def clean_cep(self):
+        if self.cep.isdigit():
+            return self.cep
+        else:
+            print("Invalid cep, must be only numbers.")
+            return None
+    
+    def search_cep(self):
+        self.response = requests.get(f"https://viacep.com.br/ws/{self.cleaned_cep}/json/").json()
+        return self.response
+    
+    def display_cep(self):
+        print(f"State: {self.state}\n"
+              f"City: {self.city}\n"
+              f"Neighborhood: {self.neighborhood}\n"
+              f"Street: {self.street}\n"
+             )
