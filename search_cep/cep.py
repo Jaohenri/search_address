@@ -67,7 +67,7 @@ class Cep:
 
     def display_cep(self):
         """Prints the retrieved address information."""
-        print(f"State: {self.state}\n"
+        print(f"\nState: {self.state}\n"
               f"City: {self.city}\n"
               f"Neighborhood: {self.neighborhood}\n"
               f"Street: {self.street}\n"
