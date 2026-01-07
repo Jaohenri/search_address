@@ -57,7 +57,7 @@ class Cep:
         return None
 
 
-    def search_cep(self):
+    def search_cep(self) -> dict:
         """Queries the ViaCEP API for information about the validated CEP.
 
         Returns:
@@ -65,7 +65,7 @@ class Cep:
         """
         return requests.get(f"https://viacep.com.br/ws/{self.cleaned_cep}/json/", timeout=10).json()
 
-    def display_cep(self):
+    def display_cep(self) -> None:
         """Prints the retrieved address information."""
         print(f"\nState: {self.state}\n"
               f"City: {self.city}\n"
