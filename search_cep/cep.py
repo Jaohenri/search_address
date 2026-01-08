@@ -44,15 +44,15 @@ class Cep:
                 self.display_cep()
 
     def validate_cep(self) -> str:
-        """Validates whether the CEP contains only numeric characters.
+        """Validates whether the CEP contains only numeric characters and haves 8 characters.
 
         Returns:
             str | None: The CEP if it contains only digits, otherwise None.
         """
-        if self.cep.isdigit():
+        if self.cep.isnumeric() and len(self.cep) == 8:
             return self.cep
 
-        print("Invalid cep, must be 8 numbers.")
+        print("\nInvalid cep, must be 8 numbers.\n")
 
         return None
 
