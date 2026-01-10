@@ -2,10 +2,10 @@
 
 try:
     from .cep import Cep
-    from .__init__ import test_conection
+    from .__init__ import test_connection
 except ImportError:
     from cep import Cep
-    from __init__ import test_conection
+    from __init__ import test_connection
 
 
 if __name__ == "__main__":
@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
         print("\nCep lookup application.")
         print("\n-----------------------\n")
-        if test_conection() is False:
+        if test_connection() is False:
             break
         cep1 = Cep(input("Please inform a cep: "))
 

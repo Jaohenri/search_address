@@ -34,7 +34,7 @@ class Cep:
 
             if self.response.get("erro"):
                 raise ValueError("The cep inputed doesn't exist.")
-                
+
 
             self.state: str = self.response.get('uf')
             self.city: str = self.response.get('localidade')
