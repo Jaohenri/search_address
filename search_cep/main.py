@@ -1,12 +1,7 @@
 """Module to run the CEP lookup application."""
 
-try:
-    from .cep import Cep
-    from .__init__ import test_connection
-except ImportError:
-    from cep import Cep
-    from __init__ import test_connection
-
+from search_cep.cep import Cep
+from search_cep.connection import test_connection
 
 if __name__ == "__main__":
 
