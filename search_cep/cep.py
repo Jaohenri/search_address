@@ -33,15 +33,15 @@ class Cep:
             self.response: dict = self.search_cep()
 
             if self.response.get("erro"):
-                print("The cep inputed doesn't exist.")
+                raise ValueError("The cep inputed doesn't exist.")
+                
 
-            else:
-                self.state: str = self.response.get('uf')
-                self.city: str = self.response.get('localidade')
-                self.neighborhood: str = self.response.get('bairro')
-                self.street: str = self.response.get('logradouro')
+            self.state: str = self.response.get('uf')
+            self.city: str = self.response.get('localidade')
+            self.neighborhood: str = self.response.get('bairro')
+            self.street: str = self.response.get('logradouro')
 
-                self.display_cep()
+            self.display_cep()
 
     def validate_cep(self) -> str:
         """Validates whether the CEP contains only numeric characters and haves 8 characters.
